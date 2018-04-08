@@ -3,8 +3,10 @@ const {commit, repo} = require('./models');
 
 module.exports = (Sequelize) => {
 
-	const sequelize = new Sequelize(config.db.name,
-			config.db.user, config.db.pass, config.db.options);
+	console.log(process.env.NODE_ENV);
+	const dbConfig = config.db[process.env.NODE_ENV || 'development'];
+	const sequelize = new Sequelize(dbConfig.name,
+			dbConfig.user, dbConfig.pass, dbConfig.options);
 
 	const Commit = commit(Sequelize, sequelize);
 	const Repo = repo(Sequelize, sequelize);
