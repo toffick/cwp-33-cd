@@ -14,7 +14,7 @@ const tempDataToDb = require('./tempDataToDb.helper');
 
 	app.use(bodyParser.json());
 
-	app.use('/', (req,res)=>{
+	app.get('/', (req,res)=>{
 		res.send('Hello, Heroku');
 	});
 
